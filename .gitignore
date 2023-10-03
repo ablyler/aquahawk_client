@@ -1,6 +1,7 @@
 /.pytest_cache
 /.venv
-/__pycache__
 
 megalinter-reports/
-node_modules
+node_modules/
+__pycache__/
+/dist

@@ -11,6 +11,7 @@ pytz = "*"
 [dev-packages]
 pytest = "*"
 pytest-aiohttp = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.11"

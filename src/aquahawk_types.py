@@ -19,7 +19,7 @@ class Interval(Enum):
 
 @dataclass
 class WaterUsage(dataclasses_json.DataClassJsonMixin):
-    dataclass_json_config = config(letter_case=LetterCase.CAMEL)
+    dataclass_json_config = config(letter_case=LetterCase.CAMEL)['dataclasses_json']
     num: float
     min: float
     max: float
@@ -40,7 +40,7 @@ class WaterUsage(dataclasses_json.DataClassJsonMixin):
 
 @dataclass
 class Rainfall(dataclasses_json.DataClassJsonMixin):
-    dataclass_json_config = config(letter_case=LetterCase.CAMEL)
+    dataclass_json_config = config(letter_case=LetterCase.CAMEL)['dataclasses_json']
     num: int
     min: int
     max: int
@@ -54,7 +54,7 @@ class Rainfall(dataclasses_json.DataClassJsonMixin):
 
 @dataclass
 class Temperature(dataclasses_json.DataClassJsonMixin):
-    dataclass_json_config = config(letter_case=LetterCase.CAMEL)
+    dataclass_json_config = config(letter_case=LetterCase.CAMEL)['dataclasses_json']
     num: int
     min: float
     max: float
@@ -69,7 +69,7 @@ class Temperature(dataclasses_json.DataClassJsonMixin):
 
 @dataclass
 class Timesery(dataclasses_json.DataClassJsonMixin):
-    dataclass_json_config = config(letter_case=LetterCase.CAMEL)
+    dataclass_json_config = config(letter_case=LetterCase.CAMEL)['dataclasses_json']
     interval: Interval
     timezone: str
     timestamp: str
@@ -86,7 +86,7 @@ class Timesery(dataclasses_json.DataClassJsonMixin):
 
 @dataclass
 class Usage(dataclasses_json.DataClassJsonMixin):
-    dataclass_json_config = config(letter_case=LetterCase.CAMEL)
+    dataclass_json_config = config(letter_case=LetterCase.CAMEL)['dataclasses_json']
     success: bool
     message: str
     total: int

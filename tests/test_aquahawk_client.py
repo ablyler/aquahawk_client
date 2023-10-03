@@ -1,4 +1,5 @@
 import json
+import os
 
 import aiohttp
 import pytest_asyncio
@@ -14,7 +15,14 @@ async def client(aiohttp_client):
     )
 
     # Load the JSON data from the file
-    with open("test_usage.json", "r") as f:
+    # test_usage_path = os.path.join(
+    #     os.path.dirname(os.path.abspath(__file__)),
+    #     "/../test_usage.json"
+    # )
+
+    test_usage_path = os.path.dirname(os.path.abspath(__file__)) + "/test_usage.json"
+
+    with open(test_usage_path, "r") as f:
         usage_data = json.load(f)
 
     app.router.add_get(
