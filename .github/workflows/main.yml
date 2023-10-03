@@ -125,6 +125,7 @@ jobs:
       - name: Publish to PyPI
         run: |
           pip install poetry
+          poetry version ${{ needs.meta.outputs.bin_version }}
           poetry build
 
       - name: Publish package distributions to PyPI
