@@ -1,3 +1,4 @@
+"""Define a base client for interacting with AquaHawk."""
 import datetime
 import json
 import time
@@ -5,9 +6,10 @@ import urllib.parse
 from typing import Dict, Optional
 
 import aiohttp
-from .types import Interval, Usage, WaterUsage, Rainfall, Temperature, Timesery 
 import pytz
 from yarl import URL
+
+from .types import Interval, Usage
 
 
 class AquaHawkClient:
@@ -111,9 +113,7 @@ class AquaHawkClient:
         jsonText = await self.http_get_request(
             "/timeseries?" + query_string, headers={"accept": "application/json"}
         )
-        return Usage.from_json(
-            jsonText
-        )  # pyright: ignore [reportGeneralTypeIssues]
+        return Usage.from_json(jsonText)  # pyright: ignore [reportGeneralTypeIssues]
 
     async def get_usage_today(self) -> Usage:
         """
@@ -147,9 +147,7 @@ class AquaHawkClient:
         startTime = datetime.datetime(datetime.date.today().year, 1, 1)
         endTime = datetime.datetime(datetime.date.today().year, 12, 31)
 
-        return await self.get_usage(
-            startTime, endTime, Interval.ONE_YEAR
-        )
+        return await self.get_usage(startTime, endTime, Interval.ONE_YEAR)
 
     async def authenticate(self):
         """

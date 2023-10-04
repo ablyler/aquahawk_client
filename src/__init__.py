@@ -1,1 +1,0 @@
-"""Define the aquahawk_client package."""
