@@ -1,2 +1,2 @@
-# aquahawk-client
+# aquahawk_client
 Python client for AquaHawk
