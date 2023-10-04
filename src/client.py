@@ -5,7 +5,7 @@ import urllib.parse
 from typing import Dict, Optional
 
 import aiohttp
-import aquahawk_types
+from .types import Interval, Usage, WaterUsage, Rainfall, Temperature, Timesery 
 import pytz
 from yarl import URL
 
@@ -67,7 +67,7 @@ class AquaHawkClient:
         self,
         startTime: datetime.datetime,
         endTime: datetime.datetime,
-        interval: aquahawk_types.Interval = aquahawk_types.Interval.ONE_DAY,
+        interval: Interval = Interval.ONE_DAY,
     ):
         """
         Retrieves water usage data for a specified time range and interval.
@@ -111,11 +111,11 @@ class AquaHawkClient:
         jsonText = await self.http_get_request(
             "/timeseries?" + query_string, headers={"accept": "application/json"}
         )
-        return aquahawk_types.Usage.from_json(
+        return Usage.from_json(
             jsonText
         )  # pyright: ignore [reportGeneralTypeIssues]
 
-    async def get_usage_today(self) -> aquahawk_types.Usage:
+    async def get_usage_today(self) -> Usage:
         """
         Gets the water usage for the current day.
 
@@ -133,7 +133,7 @@ class AquaHawkClient:
 
         return await self.get_usage(startTime, endTime)
 
-    async def get_usage_this_year(self) -> aquahawk_types.Usage:
+    async def get_usage_this_year(self) -> Usage:
         """
         Gets the water usage for the current year.
 
@@ -148,7 +148,7 @@ class AquaHawkClient:
         endTime = datetime.datetime(datetime.date.today().year, 12, 31)
 
         return await self.get_usage(
-            startTime, endTime, aquahawk_types.Interval.ONE_YEAR
+            startTime, endTime, Interval.ONE_YEAR
         )
 
     async def authenticate(self):

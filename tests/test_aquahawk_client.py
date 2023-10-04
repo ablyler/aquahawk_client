@@ -3,8 +3,8 @@ import os
 
 import aiohttp
 import pytest_asyncio
-from aquahawk_client import AquaHawkClient
-from aquahawk_types import Usage
+from src.client import AquaHawkClient
+from src.types import Usage
 
 
 @pytest_asyncio.fixture
