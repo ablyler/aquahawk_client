@@ -167,4 +167,12 @@ class AquaHawkClient:
 
 
 class AuthenticationError(Exception):
-    """Raised when authentication fails."""
+    """Raised when authentication fails.
+
+    Attributes:
+        message -- explanation of the error
+    """
+
+    def __init__(self, message="Authentication failed."):
+        self.message = message
+        super().__init__(self.message)
