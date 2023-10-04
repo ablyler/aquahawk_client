@@ -63,7 +63,7 @@ class AquaHawkClient:
         """
         async with self._session.post(uri, headers=headers, data=data) as response:
             response.raise_for_status()
-            return response
+            return await response.json()
 
     async def get_usage(
         self,
@@ -151,18 +151,20 @@ class AquaHawkClient:
 
     async def authenticate(self):
         """
-        Authenticates the client with the AquaHawk API.
-
-        Sends an HTTP POST request to the "/login" endpoint with the client's
-        username and password in the request body. If the request is
-        successful, the client's session will be authenticated and authorized
-        to make further requests.
+        Authenticates the client with the server.
 
         Raises:
-            aiohttp.ClientResponseError: If the response status code is not in
-                the 200-299 range.
+            AuthenticationError: If authentication fails.
 
+        Returns:
+            None
         """
         headers = {"accept": "application/json"}
         payload = {"username": self.username, "password": self.password}
-        await self.http_post_request("/login", data=payload, headers=headers)
+        json = await self.http_post_request("/login", data=payload, headers=headers)
+        if json.get("success") is not True:
+            raise AuthenticationError("Authentication failed")
+
+
+class AuthenticationError(Exception):
+    """Raised when authentication fails."""
