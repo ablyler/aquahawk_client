@@ -232,12 +232,12 @@
         },
         "dataclasses-json": {
             "hashes": [
-                "sha256:1bd8418a61fe3d588bb0079214d7fb71d44937da40742b787256fd53b26b6c80",
-                "sha256:a53c220c35134ce08211a1057fd0e5bf76dc5331627c6b241cacbc570a89faae"
+                "sha256:1b934c1bd63e775880946b8361a902d7de86e894bab8098eab27c010f95724d1",
+                "sha256:71816ced3d0f55a2c5bc1a813ace1b8d4234e79a08744269a7cf84d6f7c06e99"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.7' and python_version < '4.0'",
-            "version": "==0.6.1"
+            "version": "==0.6.2"
         },
         "frozenlist": {
             "hashes": [
