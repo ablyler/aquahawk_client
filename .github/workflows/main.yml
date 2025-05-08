@@ -88,7 +88,7 @@ jobs:
           pip install pipenv
           pipenv install
       - name: Run MegaLinter
-        uses: oxsecurity/megalinter@v7
+        uses: oxsecurity/megalinter@v8
         env:
           # See https://megalinter.io/configuration and .mega-linter.yml
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
